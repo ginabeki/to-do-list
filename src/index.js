@@ -16,11 +16,10 @@ class MyObjects {
   }
 }
 
-// Array of Objects
 // eslint-disable-next-line import/prefer-default-export
 export const myArray = [];
 
-// Add Methods
+// Add Method
 const addTodo = (todoValue) => {
   const todoContainer = document.createElement('div');
   todoContainer.className = 'todoContainer';
@@ -73,7 +72,7 @@ inputText.addEventListener('keypress', (e) => {
 
 getFromLocal();
 
-// Clear all function
+// Clear method
 const ClearAllBtn = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
   const todoContainer = document.querySelectorAll('.todoContainer');
