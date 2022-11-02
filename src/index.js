@@ -72,7 +72,7 @@ inputText.addEventListener('keypress', (e) => {
 
 getFromLocal();
 
-// Clear method
+// Clear all completed
 const ClearAllBtn = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
   const todoContainer = document.querySelectorAll('.todoContainer');
