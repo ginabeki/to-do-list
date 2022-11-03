@@ -1,89 +1,40 @@
-import { editTodo, removeTodo } from './edit-remove.js';
-import { getFromLocal, updateLocalStorage } from './local-storage';// eslint-disable-line
 import './style.css';
+import addElem from './addElement.js';
+import TaskList from './class_task_list.js';
+import refreshList from './refresh.js';
 
-// Queries to HTML
-const inputText = document.querySelector('input');
-const todoMainContainer = document.querySelector('.todos-container');
-const ClearBtn = document.querySelector('button');
+const taskList = new TaskList();
 
-// class object
-class MyObjects {
-  constructor(description, completed, index) {
-    this.description = description;
-    this.completed = completed;
-    this.index = index;
-  }
-}
+const mainContainer = document.querySelector('.todo-list-container');
 
-// eslint-disable-next-line import/prefer-default-export
-export const myArray = [];
+mainContainer.innerHTML = `<div class="row">
+<h1>Today's To Do</h1>
+<i class="fa-solid fa-rotate fa-lg font-awesome-icon"></i>
+</div>`;
+const inputContainer = addElem('form', [], mainContainer);
+const inputText = addElem('input', ['input-add-task'], inputContainer);
+inputText.setAttribute('placeholder', 'Add to your list...');
+addElem('i', ['fa-solid', 'fa-arrow-right-to-bracket', 'fa-sm', 'font-awesome-icon'], inputContainer);
 
-// Add Method
-const addTodo = (todoValue) => {
-  const todoContainer = document.createElement('div');
-  todoContainer.className = 'todoContainer';
-  todoContainer.innerHTML += `
-    <input type='checkbox' class='checkbox'>
-    <span>${todoValue}</span>
-    <i class='fas fa-ellipsis-v'></i>
-    <i class='fas fa-trash-alt'></i>
-  `;
-  todoMainContainer.appendChild(todoContainer);
-  const checkbox = document.querySelectorAll('.checkbox');
-  checkbox.forEach((i) => {
-    i.addEventListener('click', () => {
-      i.parentElement.classList.toggle('checkedContainer');
-      i.nextElementSibling.classList.toggle('checkToDo');
-      i.parentElement.lastElementChild.classList.toggle('trash-active');
-      i.parentElement.lastElementChild.previousElementSibling.classList.toggle('edited-disable');
-      updateLocalStorage();
-    });
-  });
+const listContainer = addElem('div', [], mainContainer);
 
-  // Objects
-  const object = new MyObjects(todoValue, false, checkbox.length - 1);
-  myArray.push(object);
-  localStorage.setItem('list', JSON.stringify(myArray));
+const clearButton = addElem('button', ['button'], mainContainer);
+clearButton.textContent = 'Clear all completed';
 
-  const EditIcons = document.querySelectorAll('.fa-ellipsis-v');
-  EditIcons.forEach((i) => {
-    i.addEventListener('click', () => {
-      editTodo(todoContainer, i.previousElementSibling);
-      i.parentElement.classList.add('checkedContainer');
-    });
-  });
+// Input functionalities
+inputContainer.onsubmit = (e) => {
+  e.preventDefault();
+  taskList.addTask(inputText.value);
 
-  const removeIcons = document.querySelectorAll('.fa-trash-alt');
-  removeIcons.forEach((i) => {
-    i.addEventListener('click', () => {
-      removeTodo(i.parentElement);
-    });
-  });
+  inputContainer.reset();
+  refreshList(taskList, listContainer);
 };
 
-inputText.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && inputText.value) {
-    // e.preventDefault();
-    addTodo(inputText.value);
-    inputText.value = null;
-  }
-});
-
-getFromLocal();
-
-// Clear all completed
-const ClearAllBtn = () => {
-  const localData = JSON.parse(localStorage.getItem('list'));
-  const todoContainer = document.querySelectorAll('.todoContainer');
-  todoContainer.forEach((i) => {
-    if (i.classList.contains('checkedContainer')) {
-      removeTodo(i);
-    }
-  });
-  let count = 0;
-  const data = Array.from(localData).filter(i => i.completed === false);// eslint-disable-line
-  data.map(i.index = count += 1); // eslint-disable-line
-  localStorage.setItem('list', JSON.stringify(data));
+// clear button
+clearButton.onclick = () => {
+  taskList.clearCompleted();
+  refreshList(taskList, listContainer);
 };
-ClearBtn.addEventListener('click', ClearAllBtn);
+
+// On load
+refreshList(taskList, listContainer);
