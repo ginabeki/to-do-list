@@ -19,7 +19,7 @@
 
 ## Screenshot
 
-![Desktop Design](./preview/preview.png)
+[![Screenshot-from-2022-11-03-11-49-12.png](https://i.postimg.cc/NjHFS9Cw/Screenshot-from-2022-11-03-11-49-12.png)](https://postimg.cc/yD77Sdzf)
 
 ## Getting Started
 
