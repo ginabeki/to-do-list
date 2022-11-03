@@ -1,79 +1,40 @@
 import './style.css';
-import Delete from './delete.js';
-import Action from './actions.js';
+import addElem from './addElement.js';
+import TaskList from './class_task_list.js';
+import refreshList from './refresh.js';
 
-class ToDo {
-  collection = [];
+const taskList = new TaskList();
 
-  list = document.querySelector('.add-list');
+const mainContainer = document.querySelector('.todo-list-container');
 
-  displayToDo(data) {
-    this.data = data;
-    const parent = document.querySelector('.output');
-    const ul = document.createElement('ul');
-    ul.innerHTML = `
-      <li class="display-list">
-          <input type="checkbox" id= ${this.data.index} class="check"></input>
-          <input class="desc" value="${this.data.description}"></input>
-          <i class="fa-solid  fa fa-ellipsis-vertical dot"></i>
-          <i id= ${this.data.index} class="fa-solid  fa fa-trash fa-hide"></i>
-      </li>
-      `;
-    parent.append(ul);
-  }
+mainContainer.innerHTML = `<div class="row">
+<h1>Today's To Do</h1>
+<i class="fa-solid fa-rotate fa-lg font-awesome-icon"></i>
+</div>`;
+const inputContainer = addElem('form', [], mainContainer);
+const inputText = addElem('input', ['input-add-task'], inputContainer);
+inputText.setAttribute('placeholder', 'Add to your list...');
+addElem('i', ['fa-solid', 'fa-arrow-right-to-bracket', 'fa-sm', 'font-awesome-icon'], inputContainer);
 
-  // get book from local storage
-  getStorage = () => {
-    const list = JSON.parse(localStorage.getItem('list'));
-    list.forEach((li) => this.displayToDo(li));
-  };
+const listContainer = addElem('div', [], mainContainer);
 
-  check() {
-    this.parent = document.querySelector('.output');
-    this.parent.addEventListener('click', (e) => {
-      if (e.target.className === 'check') {
-        const la = e.target.parentElement.children[1];
-        la.classList.toggle('text');
-      }
-    });
-  }
+const clearButton = addElem('button', ['button'], mainContainer);
+clearButton.textContent = 'Clear all completed';
 
-  addBtn() {
-    this.list.addEventListener('keypress', (e) => {
-      const en = document.querySelector('.add-list');
-      if (e.key === 'Enter') {
-        const obj = { description: this.list.value, complete: false, index: 0 };
-        this.collection.push(obj);
-        obj.index += this.collection.length;
-        this.displayToDo(obj);
-        localStorage.setItem('list', JSON.stringify(this.collection));
-        en.value = '';
-      }
-    });
-  }
+// Input functionalities
+inputContainer.onsubmit = (e) => {
+  e.preventDefault();
+  taskList.addTask(inputText.value);
 
-  btn() {
-    this.parent = document.querySelector('.output');
-    this.parent.addEventListener('click', (e) => {
-      if (e.target.classList.contains('dot')) {
-        e.target.classList.toggle('fa-hide');
-        e.target.nextElementSibling.classList.toggle('fa-show');
-        e.target.parentElement.style.backgroundColor = 'yellow';
-        e.target.parentElement.children[1].style.backgroundColor = 'yellow';
-      }
-    });
-  }
-}
-const obj = new ToDo();
-const del = new Delete();
-const act = new Action();
+  inputContainer.reset();
+  refreshList(taskList, listContainer);
+};
 
-obj.addBtn();
-obj.check();
-obj.btn();
-del.trash(obj.collection);
-del.delete(obj.collection);
-act.complete(obj.collection);
+// clear button
+clearButton.onclick = () => {
+  taskList.clearCompleted();
+  refreshList(taskList, listContainer);
+};
 
-// Display all todo list when page loaded
-document.addEventListener('DOMContentLoaded', obj.getStorage());
+// On load
+refreshList(taskList, listContainer);
