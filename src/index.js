@@ -42,7 +42,7 @@ class ToDo {
     this.list.addEventListener('keypress', (e) => {
       const en = document.querySelector('.add-list');
       if (e.key === 'Enter') {
-        const obj = { description: this.list.value, complete: false, index: 1 };
+        const obj = { description: this.list.value, complete: false, index: 0 };
         this.collection.push(obj);
         obj.index += this.collection.length;
         this.displayToDo(obj);
