@@ -19,7 +19,7 @@
 
 ## Screenshot
 
-[![Screenshot-from-2022-11-03-11-49-12.png](https://i.postimg.cc/NjHFS9Cw/Screenshot-from-2022-11-03-11-49-12.png)](https://postimg.cc/yD77Sdzf)
+[![Screenshot-from-2022-11-03-21-29-57.png](https://i.postimg.cc/3xdFF46Q/Screenshot-from-2022-11-03-21-29-57.png)](https://postimg.cc/mPW9bDBm)
 
 ## Getting Started
 
