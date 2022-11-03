@@ -5,6 +5,7 @@ export default class Delete {
     parent.addEventListener('click', (e) => {
       if (e.target.classList.contains('fa-trash')) {
         this.clearStorage(col, e.target.id);
+        document.querySelector('.fa-trash').style.display = 'block';
         e.target.parentElement.remove();
       }
     });

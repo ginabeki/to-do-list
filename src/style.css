@@ -38,16 +38,20 @@ body {
   border-bottom: 1px solid grey;
 }
 
+.check {
+  margin-left: 10px;
+}
+
 input {
-  padding: 20px;
+  padding: 15px;
   border: none;
   outline: none;
-  width: 100%;
 }
 
 .add-list {
   font-style: italic;
   font-size: 17px;
+  width: 100%;
 }
 
 .clear-btn {
@@ -55,6 +59,7 @@ input {
   cursor: pointer;
   font-size: 20px;
   color: black;
+  width: 100%;
 }
 
 .clear-btn:hover {
@@ -66,13 +71,12 @@ input {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding: 2px;
   border-bottom: 1px solid grey;
 }
 
 .desc {
-  width: 80%;
-  margin-left: 20px;
+  width: 100%;
   border: none;
   outline: none;
 }
@@ -83,16 +87,13 @@ input {
 
 .fa-trash {
   cursor: pointer;
+  display: none;
 }
 
 .fa {
   position: absolute;
   right: 3%;
   color: grey;
-}
-
-.fa-hide {
-  display: none;
 }
 
 .fa-show {
