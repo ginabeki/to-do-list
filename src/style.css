@@ -1,93 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", serif;
+}
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: lightgrey;
-}
-
-section {
-  box-shadow: 1px 6px 17px -1px rgba(34, 60, 80, 0.19);
-  width: 40vw;
-  font-family: Poppins, serif;
-  font-size: 18px;
   background-color: #fff;
-  margin-left: 28%;
-  margin-top: 10%;
-}
-
-.todos-Container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.todoContainer {
-  margin: 10px 15px;
-  padding: 30px 10px;
-  border-bottom: 1px solid lightgrey;
+.container {
+  width: 65%;
+  margin: auto;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.8);
+  box-shadow: #0000003d 0 3px 8px;
 }
 
-i {
-  float: right;
-}
-
-.header {
+.head {
+  width: 100%;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  margin: auto 15px;
-  font-weight: 500;
-}
-
-.header .fa-sync {
-  margin-top: 25px;
-}
-
-.header h1 {
-  font-weight: 600;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input {
-  border: transparent;
   border-bottom: 1px solid grey;
-  margin: auto 10px;
-  font-style: italic;
-  padding: 10px;
 }
 
-form button {
+.inputs {
+  width: 100%;
+  border-bottom: 1px solid grey;
+}
+
+input {
+  padding: 20px;
   border: none;
-  padding: 14px;
-  color: lightgray;
+  outline: none;
+  width: 100%;
 }
 
-form button:hover {
-  color: grey;
+.add-list {
+  font-style: italic;
+  font-size: 17px;
+}
+
+.clear-btn {
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+}
+
+.clear-btn:hover {
   text-decoration: underline;
+}
+
+.display-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.desc {
+  width: 80%;
+  margin-left: 20px;
+  border: none;
+  outline: none;
+}
+
+.dot {
+  cursor: move;
+}
+
+.fa-trash {
   cursor: pointer;
 }
 
-.fa-trash-alt {
+.fa {
+  position: absolute;
+  right: 3%;
+  color: grey;
+}
+
+.fa-hide {
   display: none;
 }
 
-.trash-active {
+.fa-show {
   display: block;
 }
 
-.edited-disable {
-  display: none;
-}
-
-.checkedContainer {
-  background-color: rgb(250, 237, 220);
-}
-
-.checkToDo {
+.text {
   text-decoration: line-through;
 }
