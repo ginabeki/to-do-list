@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", serif;
+}
+
+body {
+  background-color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  width: 65%;
+  margin: auto;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.8);
+  box-shadow: #0000003d 0 3px 8px;
+}
+
+.head {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+}
+
+.inputs {
+  width: 100%;
+  border-bottom: 1px solid grey;
+}
+
+.check {
+  margin-left: 10px;
+}
+
+input {
+  padding: 15px;
+  border: none;
+  outline: none;
+}
+
+.add-list {
+  font-style: italic;
+  font-size: 17px;
+  width: 100%;
+}
+
+.clear-btn {
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+  width: 100%;
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+}
+
+.display-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2px;
+  border-bottom: 1px solid grey;
+}
+
+.desc {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.dot {
+  cursor: move;
+}
+
+.fa-trash {
+  cursor: pointer;
+  display: none;
+}
+
+.fa {
+  position: absolute;
+  right: 3%;
+  color: grey;
+}
+
+.fa-show {
+  display: block;
+}
+
+.text {
+  text-decoration: line-through;
+}
