@@ -14,7 +14,7 @@ const task3 = 'This is task 3';
 describe('Check if the localStorage and the DOM are being used as intended:', () => {
   describe('Add items:', () => {
     // Add Local storage 1
-    test(`localStorage add task: "${task1}"`, () => {
+    test(`Add task to localStorage : "${task1}"`, () => {
       taskList.addTask(task1);
 
       // Check the value in local storage
@@ -24,7 +24,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
     });
 
     // Add DOM 1
-    test(`DOM add task: "${task1}"`, () => {
+    test(`Add task to DOM: "${task1}"`, () => {
       refreshList(taskList, document.body);
       const validateElements = document.querySelectorAll('.todo-list');
 
@@ -32,7 +32,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
     });
 
     // Add Local storage 2
-    test(`localStorage add task: "${task2}"`, () => {
+    test(`Add task to localStorage: "${task2}"`, () => {
       taskList.addTask(task2);
 
       // Check the value in local storage
@@ -43,7 +43,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
     });
 
     // Add DOM 2
-    test(`DOM add task: "${task2}"`, () => {
+    test(`Add task to DOM : "${task2}"`, () => {
       refreshList(taskList, document.body);
       const validateElements = document.querySelectorAll('.todo-list');
 
@@ -51,7 +51,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
     });
 
     // Add Local storage 3
-    test(`localStorage add task: "${task3}"`, () => {
+    test(`Add task to localStorage: "${task3}"`, () => {
       taskList.addTask(task3);
 
       // Check the value in local storage
@@ -63,7 +63,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
     });
 
     // Add DOM 3
-    test(`DOM add task: "${task3}"`, () => {
+    test(`Add task to DOM : "${task3}"`, () => {
       refreshList(taskList, document.body);
       const validateElements = document.querySelectorAll('.todo-list');
 
@@ -72,8 +72,8 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
   });
 
   // remove items
-  describe('Remove items:', () => {
-    test(` localStorage remove task: "${task1}"`, () => {
+  describe('Delete items:', () => {
+    test(`Delete task from localStorage: "${task1}"`, () => {
       taskList.removeTask(1);
       // check the value in the local storage
       expect(JSON.parse(localStorage.getItem(storageName))).toEqual([
@@ -82,14 +82,14 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
       ]);
     });
     // DOM Remove 1
-    test(`DOM remove task: "${task1}"`, () => {
+    test(`Delete task from DOM: "${task1}"`, () => {
       refreshList(taskList, document.body);
       const validateElements = document.querySelectorAll('.todo-list');
 
       expect(validateElements.length).toBe(2);
     });
 
-    test(`localStorage remove task: "${task3}"`, () => {
+    test(`Delete task from localStorage: "${task3}"`, () => {
       taskList.removeTask(2);
       // check the value in the local storage
       expect(JSON.parse(localStorage.getItem(storageName))).toEqual([
@@ -97,7 +97,7 @@ describe('Check if the localStorage and the DOM are being used as intended:', ()
       ]);
     });
     // DOM Remove 2
-    test(`DOM remove task: "${task3}"`, () => {
+    test(`Delete task from DOM : "${task3}"`, () => {
       refreshList(taskList, document.body);
       const validateElements = document.querySelectorAll('.todo-list');
 
