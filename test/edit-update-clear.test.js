@@ -65,7 +65,6 @@ describe('Check if edit, update, and clear are working as intended:', () => {
   });
   // 3. Clear all completed
   describe('Clear all completed tasks:', () => {
-    // Local storage
     test(`localStorage clear completed tasks ("${task2New}")`, () => {
       taskList.clearCompleted();
 
